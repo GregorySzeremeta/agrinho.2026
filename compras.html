@@ -3,178 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div style="text-align:center; margin:20px;">
-    <a href="index.html">
-        <button style="
-            background:#1565c0;
-            color:white;
-            border:none;
-            padding:12px 20px;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
-            font-weight:bold;
-        ">
-            🏠 Voltar ao Início
-        </button>
-    </a>
-</div>
 <title>🌾 Loja Agro Paraná</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f4f4f4;
-}
-
-header{
-background:#2e7d32;
-color:white;
-text-align:center;
-padding:25px;
-}
-
-.container{
-display:flex;
-gap:20px;
-padding:20px;
-}
-
-.produtos{
-flex:3;
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-padding:15px;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-text-align:center;
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:10px;
-}
-
-.card h3{
-margin:10px 0;
-}
-
-.card p{
-color:#2e7d32;
-font-weight:bold;
-font-size:18px;
-}
-
-.card button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:10px 15px;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
-}
-
-.card button:hover{
-background:#1b5e20;
-}
-
-.carrinho{
-flex:1;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-height:fit-content;
-position:sticky;
-top:20px;
-}
-
-.item{
-border-bottom:1px solid #ddd;
-padding:10px 0;
-}
-
-.item button{
-margin-top:5px;
-padding:4px 8px;
-}
-
-.total{
-font-size:22px;
-font-weight:bold;
-color:#2e7d32;
-margin-top:15px;
-}
-
-.btn{
-width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-margin-top:10px;
-font-size:16px;
-}
-
-.limpar{
-background:#c62828;
-color:white;
-}
-
-.finalizar{
-background:#2e7d32;
-color:white;
-}
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-justify-content:center;
-align-items:center;
-}
-
-.modal-content{
-background:white;
-padding:25px;
-border-radius:12px;
-width:350px;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.modal-content input,
-.modal-content select{
-padding:10px;
-}
-
-@media(max-width:900px){
-.container{
-flex-direction:column;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f4f4;}
+header{background:#2e7d32;color:#fff;padding:25px;text-align:center;}
+.voltar{display:inline-block;margin:20px;background:#1565c0;color:white;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:bold;}
+.voltar:hover{background:#0d47a1;}
+.container{display:flex;gap:20px;padding:20px;}
+.produtos{flex:3;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.card{background:white;padding:15px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.1);text-align:center;}
+.card img{width:100%;height:180px;object-fit:cover;border-radius:10px;}
+.card h3{margin:10px 0;}
+.preco{color:#2e7d32;font-size:20px;font-weight:bold;}
+.card button{background:#2e7d32;color:white;border:none;padding:10px;border-radius:8px;cursor:pointer;margin-top:10px;width:100%;}
+.card button:hover{background:#1b5e20;}
+.carrinho{flex:1;background:white;padding:20px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.1);position:sticky;top:20px;height:fit-content;}
+.item{border-bottom:1px solid #ddd;padding:10px 0;}
+.item button{padding:4px 10px;margin-top:5px;}
+.total{font-size:22px;font-weight:bold;color:#2e7d32;margin-top:15px;}
+.btn{width:100%;padding:12px;border:none;border-radius:8px;cursor:pointer;margin-top:10px;font-size:16px;}
+.limpar{background:#c62828;color:white;}
+.finalizar{background:#2e7d32;color:white;}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);justify-content:center;align-items:center;}
+.modal-content{background:white;padding:25px;border-radius:12px;width:350px;display:flex;flex-direction:column;gap:10px;}
+.modal-content input, .modal-content select{padding:10px;}
+@media(max-width:900px){.container{flex-direction:column;}}
 </style>
 </head>
 <body>
+
+<a href="index.html" class="voltar">🏠 Voltar ao Início</a>
 
 <header>
 <h1>🌾 Loja Agro Paraná</h1>
@@ -182,295 +42,105 @@ flex-direction:column;
 </header>
 
 <div class="container">
-
 <div class="produtos" id="produtos"></div>
 
 <div class="carrinho">
-
 <h2>🛒 Carrinho</h2>
-
 <div id="itensCarrinho"></div>
-
-<p class="total">
-Total: R$ <span id="total">0.00</span>
-</p>
-
-<button class="btn limpar" onclick="limparCarrinho()">
-🗑 Limpar Carrinho
-</button>
-
-<button class="btn finalizar" onclick="abrirCheckout()">
-✅ Finalizar Compra
-</button>
-
+<p class="total">Total: R$ <span id="total">0.00</span></p>
+<button class="btn limpar" onclick="limparCarrinho()">🗑 Limpar Carrinho</button>
+<button class="btn finalizar" onclick="abrirCheckout()">✅ Finalizar Compra</button>
 </div>
-
 </div>
 
 <div class="modal" id="checkout">
-
 <div class="modal-content">
-
 <h2>Finalizar Pedido</h2>
-
-<input
-type="text"
-id="nome"
-placeholder="Seu nome">
-
-<input
-type="text"
-id="endereco"
-placeholder="Endereço">
-
+<input type="text" id="nome" placeholder="Seu nome">
+<input type="text" id="endereco" placeholder="Endereço">
 <select id="pagamento">
 <option>Pix</option>
 <option>Cartão</option>
 <option>Boleto</option>
 </select>
-
-<button class="btn finalizar"
-onclick="confirmarCompra()">
-Confirmar Pedido
-</button>
-
-<button class="btn limpar"
-onclick="fecharCheckout()">
-Cancelar
-</button>
-
+<button class="btn finalizar" onclick="confirmarCompra()">Confirmar Pedido</button>
+<button class="btn limpar" onclick="fecharCheckout()">Cancelar</button>
 </div>
-
 </div>
 
 <script>
-
 const produtos = [
-
-{nome:"Milho",preco:12},
-{nome:"Soja",preco:18},
-{nome:"Tomate",preco:9},
-{nome:"Batata",preco:7},
-{nome:"Café",preco:25},
-{nome:"Feijão",preco:10},
-{nome:"Trigo",preco:15},
-{nome:"Mel",preco:22},
-{nome:"Maçã",preco:11},
-{nome:"Leite",preco:8}
-
+{nome:"Milho", preco:12},
+{nome:"Soja", preco:18},
+{nome:"Tomate", preco:9},
+{nome:"Batata", preco:7},
+{nome:"Café", preco:25},
+{nome:"Feijão", preco:10},
+{nome:"Trigo", preco:15},
+{nome:"Mel", preco:22},
+{nome:"Maçã", preco:11},
+{nome:"Leite", preco:8}
 ];
 
-let carrinho =
-JSON.parse(localStorage.getItem("carrinho")) || [];
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-function salvarCarrinho(){
-localStorage.setItem(
-"carrinho",
-JSON.stringify(carrinho)
-);
-}
+function salvarCarrinho(){ localStorage.setItem("carrinho", JSON.stringify(carrinho)); }
 
 function carregarProdutos(){
-
-const area =
-document.getElementById("produtos");
-
+const area = document.getElementById("produtos");
+area.innerHTML = "";
 produtos.forEach(produto=>{
-
 area.innerHTML += `
 <div class="card">
-
-<img src="https://picsum.photos/300/200?random=${produto.nome}">
-
+<img src="https://picsum.photos/300/200?random=${produto.nome}" alt="${produto.nome}">
 <h3>${produto.nome}</h3>
-
-<p>R$ ${produto.preco.toFixed(2)}</p>
-
-<button onclick="adicionar('${produto.nome}',${produto.preco})">
-Adicionar ao Carrinho
-</button>
-
-</div>
-`;
-
+<p class="preco">R$ ${produto.preco.toFixed(2)}</p>
+<button onclick="adicionar('${produto.nome}',${produto.preco})">Adicionar ao Carrinho</button>
+</div>`;
 });
-
 }
 
 function adicionar(nome,preco){
-
-const existe =
-carrinho.find(p=>p.nome===nome);
-
-if(existe){
-
-existe.qtd++;
-
-}else{
-
-carrinho.push({
-nome,
-preco,
-qtd:1
-});
-
-}
-
-salvarCarrinho();
-renderizarCarrinho();
+const existe = carrinho.find(p=>p.nome===nome);
+if(existe){ existe.qtd++; } else { carrinho.push({nome, preco, qtd:1}); }
+salvarCarrinho(); renderizarCarrinho();
 }
 
 function renderizarCarrinho(){
-
-const area =
-document.getElementById("itensCarrinho");
-
+const area = document.getElementById("itensCarrinho");
 area.innerHTML="";
-
 let total=0;
-
 carrinho.forEach((item,index)=>{
-
 total += item.preco * item.qtd;
-
 area.innerHTML += `
 <div class="item">
-
-<strong>${item.nome}</strong>
-
-<br>
-
-Qtd: ${item.qtd}
-
-<br>
-
-R$ ${(item.preco*item.qtd).toFixed(2)}
-
-<br>
-
+<strong>${item.nome}</strong><br>
+Qtd: ${item.qtd}<br>
+R$ ${(item.preco*item.qtd).toFixed(2)}<br>
 <button onclick="mais(${index})">➕</button>
-
 <button onclick="menos(${index})">➖</button>
-
-</div>
-`;
-
+</div>`;
 });
-
-document.getElementById("total")
-.textContent =
-total.toFixed(2);
+document.getElementById("total").textContent = total.toFixed(2);
 }
 
-function mais(i){
-
-carrinho[i].qtd++;
-
-salvarCarrinho();
-
-renderizarCarrinho();
-}
-
-function menos(i){
-
-carrinho[i].qtd--;
-
-if(carrinho[i].qtd <= 0){
-carrinho.splice(i,1);
-}
-
-salvarCarrinho();
-
-renderizarCarrinho();
-}
-
-function limparCarrinho(){
-
-if(confirm("Deseja limpar o carrinho?")){
-
-carrinho=[];
-
-salvarCarrinho();
-
-renderizarCarrinho();
-
-}
-
-}
-
-function abrirCheckout(){
-
-if(carrinho.length===0){
-
-alert("Seu carrinho está vazio.");
-
-return;
-}
-
-document.getElementById("checkout")
-.style.display="flex";
-}
-
-function fecharCheckout(){
-
-document.getElementById("checkout")
-.style.display="none";
-}
-
+function mais(i){ carrinho[i].qtd++; salvarCarrinho(); renderizarCarrinho(); }
+function menos(i){ carrinho[i].qtd--; if(carrinho[i].qtd<=0){ carrinho.splice(i,1); } salvarCarrinho(); renderizarCarrinho(); }
+function limparCarrinho(){ if(confirm("Deseja limpar o carrinho?")){ carrinho=[]; salvarCarrinho(); renderizarCarrinho(); } }
+function abrirCheckout(){ if(carrinho.length===0){ alert("Seu carrinho está vazio."); return; } document.getElementById("checkout").style.display="flex"; }
+function fecharCheckout(){ document.getElementById("checkout").style.display="none"; }
 function confirmarCompra(){
-
-const nome =
-document.getElementById("nome").value;
-
-const endereco =
-document.getElementById("endereco").value;
-
-const pagamento =
-document.getElementById("pagamento").value;
-
-if(!nome || !endereco){
-
-alert("Preencha todos os campos.");
-
-return;
-}
-
-let total=0;
-
-carrinho.forEach(item=>{
-total += item.preco * item.qtd;
-});
-
-alert(`
-🌾 Pedido realizado com sucesso!
-
-Cliente: ${nome}
-
-Endereço:
-${endereco}
-
-Pagamento:
-${pagamento}
-
-Valor Total:
-R$ ${total.toFixed(2)}
-
-Obrigado pela compra!
-`);
-
-carrinho=[];
-
-salvarCarrinho();
-
-renderizarCarrinho();
-
-fecharCheckout();
+const nome = document.getElementById("nome").value;
+const endereco = document.getElementById("endereco").value;
+const pagamento = document.getElementById("pagamento").value;
+if(!nome || !endereco){ alert("Preencha todos os campos."); return; }
+let total=0; carrinho.forEach(item=>{total+=item.preco*item.qtd;});
+alert(`🌾 Pedido realizado com sucesso!\n\nCliente: ${nome}\nEndereço: ${endereco}\nPagamento: ${pagamento}\nValor Total: R$ ${total.toFixed(2)}\n\nObrigado pela compra!`);
+carrinho=[]; salvarCarrinho(); renderizarCarrinho(); fecharCheckout();
 }
 
 carregarProdutos();
-
 renderizarCarrinho();
-
 </script>
 
 </body>
