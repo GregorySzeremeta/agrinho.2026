@@ -70,16 +70,57 @@ header{background:#2e7d32;color:#fff;padding:25px;text-align:center;}
 
 <script>
 const produtos = [
-{nome:"Milho", preco:12},
-{nome:"Soja", preco:18},
-{nome:"Tomate", preco:9},
-{nome:"Batata", preco:7},
-{nome:"Café", preco:25},
-{nome:"Feijão", preco:10},
-{nome:"Trigo", preco:15},
-{nome:"Mel", preco:22},
-{nome:"Maçã", preco:11},
-{nome:"Leite", preco:8}
+{
+nome:"Milho",
+preco:12,
+img:"https://images.unsplash.com/photo-1601598851547-4302969d0614?w=600"
+},
+{
+nome:"Soja",
+preco:18,
+img:"https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600"
+},
+{
+nome:"Tomate",
+preco:9,
+img:"https://images.unsplash.com/photo-1546470427-1228b8e1f6b1?w=600"
+},
+{
+nome:"Batata",
+preco:7,
+img:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600"
+},
+{
+nome:"Café",
+preco:25,
+img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600"
+},
+{
+nome:"Feijão",
+preco:10,
+img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600"
+},
+{
+nome:"Trigo",
+preco:15,
+img:"https://images.unsplash.com/photo-1604977042946-1eecc30f6b54?w=600"
+},
+{
+nome:"Mel",
+preco:22,
+img:"https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600"
+},
+{
+nome:"Maçã",
+preco:11,
+img:"https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600"
+},
+{
+nome:"Leite",
+preco:8,
+img:"https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600"
+}
+
 ];
 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
