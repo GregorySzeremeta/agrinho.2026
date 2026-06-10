@@ -1,80 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agro Paraná - Dashboard Inteligente</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>Agro Paraná - Portal Inteligente</title>
 
-  <!-- Charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
 
-  <!-- Leaflet (MAPA) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body>
 
 <header class="hero">
   <div class="glass">
-    <h1>🌾 Agro Inteligente no Paraná</h1>
-    <p>Dados, tecnologia e inovação no campo brasileiro</p>
-
+    <h1>🌾 Agro do Paraná</h1>
+    <p>Um dos maiores polos agrícolas do Brasil</p>
     <button onclick="toggleMode()">🌙 Modo Escuro</button>
   </div>
 </header>
 
 <nav>
+  <a href="#sobre">Sobre</a>
+  <a href="#historia">História</a>
   <a href="#mapa">Mapa</a>
-  <a href="#dashboard">Dashboard</a>
-  <a href="#culturas">Culturas</a>
-  <a href="#galeria">Galeria</a>
+  <a href="#dashboard">Produção</a>
+  <a href="#curiosidades">Curiosidades</a>
 </nav>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+  <h2>🌱 Sobre o Agro Paranaense</h2>
+  <p>
+    O agronegócio do Paraná é um dos mais desenvolvidos do Brasil, combinando agricultura moderna,
+    tecnologia e forte produção de proteína animal. O estado é referência nacional e internacional.
+  </p>
+</section>
+
+<!-- HISTÓRIA -->
+<section id="historia" class="section dark">
+  <h2>📜 História Completa</h2>
+
+  <p>
+    A agricultura no Paraná começou com povos indígenas que já cultivavam mandioca, milho e erva-mate.
+  </p>
+
+  <p>
+    A partir do século XIX, imigrantes europeus (italianos, alemães e poloneses) transformaram o estado
+    em uma base agrícola estruturada.
+  </p>
+
+  <p>
+    No século XX, houve a grande revolução agrícola: mecanização, expansão da soja, trigo e integração com a agroindústria.
+  </p>
+
+  <p>
+    Hoje, o estado é altamente tecnológico, utilizando agricultura de precisão, drones, sensores e IA.
+  </p>
+</section>
 
 <!-- MAPA -->
 <section id="mapa" class="section">
-  <h2>🗺️ Mapa Interativo do Paraná</h2>
+  <h2>🗺️ Mapa Agrícola do Paraná</h2>
   <div id="map"></div>
 </section>
 
 <!-- DASHBOARD -->
-<section id="dashboard" class="section">
+<section id="dashboard" class="section dark">
   <h2>📊 Produção Agrícola</h2>
 
   <div class="charts">
     <canvas id="chart1"></canvas>
     <canvas id="chart2"></canvas>
+    <canvas id="chart3"></canvas>
   </div>
 </section>
 
-<!-- CULTURAS -->
-<section id="culturas" class="section">
-  <h2>🌾 Principais Culturas</h2>
+<!-- CURIOSIDADES -->
+<section id="curiosidades" class="section">
+  <h2>🧠 Curiosidades Técnicas</h2>
 
   <div class="cards">
-    <div class="card">🌱 Soja</div>
-    <div class="card">🌽 Milho</div>
-    <div class="card">🐔 Frango</div>
-    <div class="card">🐷 Suínos</div>
+    <div class="card">🌾 O Paraná é líder em frango no Brasil</div>
+    <div class="card">🚜 Agricultura digital cresce mais de 20% ao ano</div>
+    <div class="card">🌽 Milho e soja dominam mais de 80% da produção</div>
+    <div class="card">📡 Uso de satélites melhora produtividade</div>
   </div>
 </section>
 
 <!-- GALERIA -->
-<section id="galeria" class="section">
-  <h2>📸 Agro em Imagens</h2>
+<section class="section">
+  <h2>📸 Imagens do Campo</h2>
 
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30">
-    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
-    <img src="https://images.unsplash.com/photo-1592982537447-6f2a2b2a4a2a">
     <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef">
+    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
+    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30">
+    <img src="https://images.unsplash.com/photo-1592982537447-6f2a2b2a4a2a">
   </div>
 </section>
 
 <footer>
-  <p>Projeto Agro Paraná • estilo dashboard institucional</p>
+  <p>🌾 Portal Agro Paraná - inspirado em dados institucionais</p>
 </footer>
 
 <script src="script.js"></script>
