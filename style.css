@@ -1,9 +1,14 @@
-/* RESET */
+/* RESET MAIS SEGURO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Arial", sans-serif;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* 🔥 resolve “margem fantasma” lateral */
 }
 
 :root {
@@ -40,6 +45,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  text-align: center;
 }
 
 .hero::after {
@@ -53,21 +59,13 @@ body {
   position: relative;
   z-index: 1;
   background: rgba(0,0,0,0.55);
-  padding: 45px;
+  padding: 40px;
   border-radius: 20px;
   color: white;
   text-align: center;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
-}
-
-.glass h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.glass p {
-  opacity: 0.9;
+  max-width: 90%;
 }
 
 /* BOTÃO */
@@ -95,7 +93,8 @@ nav {
   background: var(--green);
   display: flex;
   justify-content: center;
-  gap: 25px;
+  flex-wrap: wrap; /* 🔥 evita overflow */
+  gap: 15px;
   padding: 14px;
   box-shadow: var(--shadow);
 }
@@ -104,19 +103,14 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: var(--transition);
-}
-
-nav a:hover {
-  opacity: 0.8;
 }
 
 /* SECTIONS */
 .section {
-  padding: 80px 10%;
-  animation: fadeIn 0.6s ease-in-out;
+  padding: 60px 5%; /* 🔥 antes estava 10% (isso quebrava mobile) */
 }
 
+/* FUNDO CLARO ALTERNADO */
 .dark {
   background: rgba(0,0,0,0.03);
 }
@@ -124,18 +118,22 @@ nav a:hover {
 /* MAPA */
 #map {
   height: 420px;
+  width: 100%;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
-/* CHARTS */
+/* CHARTS (RESPONSIVO REAL) */
 .charts {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 🔥 corrigido */
   gap: 20px;
 }
 
+/* canvas seguro */
 canvas {
+  width: 100% !important;
+  height: auto !important;
   background: var(--card);
   padding: 10px;
   border-radius: var(--radius);
@@ -164,7 +162,7 @@ canvas {
 /* GALLERY */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
 }
 
@@ -201,18 +199,17 @@ footer {
   }
 }
 
-/* MOBILE */
+/* MOBILE AJUSTE FINAL */
 @media (max-width: 768px) {
-  .charts {
-    grid-template-columns: 1fr;
+  .glass {
+    padding: 25px;
   }
 
   nav {
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .glass h1 {
-    font-size: 1.6rem;
+  .section {
+    padding: 40px 5%;
   }
 }
