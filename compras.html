@@ -1,38 +1,45 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Loja Agro Paraná</title>
+<title>🌾 Loja Agro Paraná</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f5f5;
+background:#f4f4f4;
 }
 
 header{
 background:#2e7d32;
 color:white;
-padding:20px;
 text-align:center;
+padding:25px;
+}
+
+.container{
+display:flex;
+gap:20px;
+padding:20px;
 }
 
 .produtos{
+flex:3;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
 gap:20px;
-padding:30px;
 }
 
-.produto{
+.card{
 background:white;
 padding:15px;
 border-radius:12px;
@@ -40,24 +47,24 @@ box-shadow:0 3px 10px rgba(0,0,0,.1);
 text-align:center;
 }
 
-.produto img{
+.card img{
 width:100%;
 height:180px;
 object-fit:cover;
 border-radius:10px;
 }
 
-.produto h3{
+.card h3{
 margin:10px 0;
 }
 
-.produto p{
-font-size:20px;
-font-weight:bold;
+.card p{
 color:#2e7d32;
+font-weight:bold;
+font-size:18px;
 }
 
-button{
+.card button{
 background:#2e7d32;
 color:white;
 border:none;
@@ -67,148 +74,391 @@ cursor:pointer;
 margin-top:10px;
 }
 
-button:hover{
+.card button:hover{
 background:#1b5e20;
 }
 
 .carrinho{
-position:fixed;
-top:20px;
-right:20px;
+flex:1;
 background:white;
-padding:15px;
-width:300px;
+padding:20px;
 border-radius:12px;
-box-shadow:0 0 15px rgba(0,0,0,.2);
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+height:fit-content;
+position:sticky;
+top:20px;
 }
 
-.carrinho h2{
-margin-bottom:10px;
+.item{
+border-bottom:1px solid #ddd;
+padding:10px 0;
 }
 
-#listaCarrinho{
-margin-bottom:10px;
+.item button{
+margin-top:5px;
+padding:4px 8px;
 }
 
 .total{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 color:#2e7d32;
+margin-top:15px;
+}
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+font-size:16px;
+}
+
+.limpar{
+background:#c62828;
+color:white;
+}
+
+.finalizar{
+background:#2e7d32;
+color:white;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.5);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:white;
+padding:25px;
+border-radius:12px;
+width:350px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.modal-content input,
+.modal-content select{
+padding:10px;
+}
+
+@media(max-width:900px){
+.container{
+flex-direction:column;
+}
 }
 </style>
-
 </head>
 <body>
 
 <header>
-<h1>🛒 Loja Agro Paraná</h1>
-<p>Produtos frescos direto do campo</p>
+<h1>🌾 Loja Agro Paraná</h1>
+<p>Produtos frescos direto do produtor</p>
 </header>
 
-<div class="carrinho">
-<h2>Carrinho</h2>
+<div class="container">
 
-<ul id="listaCarrinho"></ul>
+<div class="produtos" id="produtos"></div>
+
+<div class="carrinho">
+
+<h2>🛒 Carrinho</h2>
+
+<div id="itensCarrinho"></div>
 
 <p class="total">
 Total: R$ <span id="total">0.00</span>
 </p>
+
+<button class="btn limpar" onclick="limparCarrinho()">
+🗑 Limpar Carrinho
+</button>
+
+<button class="btn finalizar" onclick="abrirCheckout()">
+✅ Finalizar Compra
+</button>
+
 </div>
 
-<section class="produtos">
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600" alt="">
-<h3>Milho</h3>
-<p>R$ 12</p>
-<button onclick="adicionar('Milho',12)">Adicionar</button>
 </div>
 
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1592928302636-c83cf1e1e0a4?w=600" alt="">
-<h3>Soja</h3>
-<p>R$ 18</p>
-<button onclick="adicionar('Soja',18)">Adicionar</button>
+<div class="modal" id="checkout">
+
+<div class="modal-content">
+
+<h2>Finalizar Pedido</h2>
+
+<input
+type="text"
+id="nome"
+placeholder="Seu nome">
+
+<input
+type="text"
+id="endereco"
+placeholder="Endereço">
+
+<select id="pagamento">
+<option>Pix</option>
+<option>Cartão</option>
+<option>Boleto</option>
+</select>
+
+<button class="btn finalizar"
+onclick="confirmarCompra()">
+Confirmar Pedido
+</button>
+
+<button class="btn limpar"
+onclick="fecharCheckout()">
+Cancelar
+</button>
+
 </div>
 
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=600" alt="">
-<h3>Tomate</h3>
-<p>R$ 9</p>
-<button onclick="adicionar('Tomate',9)">Adicionar</button>
 </div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600" alt="">
-<h3>Batata</h3>
-<p>R$ 7</p>
-<button onclick="adicionar('Batata',7)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1447175008436-170170753d52?w=600" alt="">
-<h3>Café</h3>
-<p>R$ 25</p>
-<button onclick="adicionar('Café',25)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600" alt="">
-<h3>Feijão</h3>
-<p>R$ 10</p>
-<button onclick="adicionar('Feijão',10)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=600" alt="">
-<h3>Trigo</h3>
-<p>R$ 15</p>
-<button onclick="adicionar('Trigo',15)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=600" alt="">
-<h3>Mel</h3>
-<p>R$ 22</p>
-<button onclick="adicionar('Mel',22)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600" alt="">
-<h3>Maçã</h3>
-<p>R$ 11</p>
-<button onclick="adicionar('Maçã',11)">Adicionar</button>
-</div>
-
-<div class="produto">
-<img src="https://images.unsplash.com/photo-1574226516831-e1dff420e37f?w=600" alt="">
-<h3>Leite</h3>
-<p>R$ 8</p>
-<button onclick="adicionar('Leite',8)">Adicionar</button>
-</div>
-
-</section>
 
 <script>
-let total = 0;
 
-function adicionar(produto, preco){
+const produtos = [
 
-const lista = document.getElementById("listaCarrinho");
+{nome:"Milho",preco:12},
+{nome:"Soja",preco:18},
+{nome:"Tomate",preco:9},
+{nome:"Batata",preco:7},
+{nome:"Café",preco:25},
+{nome:"Feijão",preco:10},
+{nome:"Trigo",preco:15},
+{nome:"Mel",preco:22},
+{nome:"Maçã",preco:11},
+{nome:"Leite",preco:8}
 
-const item = document.createElement("li");
+];
 
-item.innerHTML =
-`${produto} - R$ ${preco.toFixed(2)}`;
+let carrinho =
+JSON.parse(localStorage.getItem("carrinho")) || [];
 
-lista.appendChild(item);
+function salvarCarrinho(){
+localStorage.setItem(
+"carrinho",
+JSON.stringify(carrinho)
+);
+}
 
-total += preco;
+function carregarProdutos(){
 
-document.getElementById("total").innerText =
+const area =
+document.getElementById("produtos");
+
+produtos.forEach(produto=>{
+
+area.innerHTML += `
+<div class="card">
+
+<img src="https://picsum.photos/300/200?random=${produto.nome}">
+
+<h3>${produto.nome}</h3>
+
+<p>R$ ${produto.preco.toFixed(2)}</p>
+
+<button onclick="adicionar('${produto.nome}',${produto.preco})">
+Adicionar ao Carrinho
+</button>
+
+</div>
+`;
+
+});
+
+}
+
+function adicionar(nome,preco){
+
+const existe =
+carrinho.find(p=>p.nome===nome);
+
+if(existe){
+
+existe.qtd++;
+
+}else{
+
+carrinho.push({
+nome,
+preco,
+qtd:1
+});
+
+}
+
+salvarCarrinho();
+renderizarCarrinho();
+}
+
+function renderizarCarrinho(){
+
+const area =
+document.getElementById("itensCarrinho");
+
+area.innerHTML="";
+
+let total=0;
+
+carrinho.forEach((item,index)=>{
+
+total += item.preco * item.qtd;
+
+area.innerHTML += `
+<div class="item">
+
+<strong>${item.nome}</strong>
+
+<br>
+
+Qtd: ${item.qtd}
+
+<br>
+
+R$ ${(item.preco*item.qtd).toFixed(2)}
+
+<br>
+
+<button onclick="mais(${index})">➕</button>
+
+<button onclick="menos(${index})">➖</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("total")
+.textContent =
 total.toFixed(2);
 }
+
+function mais(i){
+
+carrinho[i].qtd++;
+
+salvarCarrinho();
+
+renderizarCarrinho();
+}
+
+function menos(i){
+
+carrinho[i].qtd--;
+
+if(carrinho[i].qtd <= 0){
+carrinho.splice(i,1);
+}
+
+salvarCarrinho();
+
+renderizarCarrinho();
+}
+
+function limparCarrinho(){
+
+if(confirm("Deseja limpar o carrinho?")){
+
+carrinho=[];
+
+salvarCarrinho();
+
+renderizarCarrinho();
+
+}
+
+}
+
+function abrirCheckout(){
+
+if(carrinho.length===0){
+
+alert("Seu carrinho está vazio.");
+
+return;
+}
+
+document.getElementById("checkout")
+.style.display="flex";
+}
+
+function fecharCheckout(){
+
+document.getElementById("checkout")
+.style.display="none";
+}
+
+function confirmarCompra(){
+
+const nome =
+document.getElementById("nome").value;
+
+const endereco =
+document.getElementById("endereco").value;
+
+const pagamento =
+document.getElementById("pagamento").value;
+
+if(!nome || !endereco){
+
+alert("Preencha todos os campos.");
+
+return;
+}
+
+let total=0;
+
+carrinho.forEach(item=>{
+total += item.preco * item.qtd;
+});
+
+alert(`
+🌾 Pedido realizado com sucesso!
+
+Cliente: ${nome}
+
+Endereço:
+${endereco}
+
+Pagamento:
+${pagamento}
+
+Valor Total:
+R$ ${total.toFixed(2)}
+
+Obrigado pela compra!
+`);
+
+carrinho=[];
+
+salvarCarrinho();
+
+renderizarCarrinho();
+
+fecharCheckout();
+}
+
+carregarProdutos();
+
+renderizarCarrinho();
+
 </script>
 
 </body>
 </html>
+```
