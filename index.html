@@ -5,11 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Agro Paraná - Portal Inteligente</title>
+<meta name="description" content="Portal completo sobre o agronegócio do Paraná: produção, tecnologia, história e dados agrícolas atualizados.">
+<meta name="author" content="Agro Paraná">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Agro Paraná - Portal Inteligente">
+<meta property="og:description" content="Informações completas sobre o agronegócio do Paraná.">
+<meta property="og:type" content="website">
 
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
@@ -18,8 +24,8 @@
 
 <header class="hero">
   <div class="glass">
-    <h1>🌾 Agro do Paraná</h1>
-    <p>Um dos maiores polos agrícolas do Brasil</p>
+    <h1>🌾 Agro do :contentReference[oaicite:0]{index=0}</h1>
+    <p>Um dos maiores polos agrícolas do :contentReference[oaicite:1]{index=1}</p>
     <button onclick="toggleMode()">🌙 Modo Escuro</button>
   </div>
 </header>
@@ -27,6 +33,7 @@
 <nav>
   <a href="#sobre">Sobre</a>
   <a href="#historia">História</a>
+  <a href="#economia">Economia</a>
   <a href="#mapa">Mapa</a>
   <a href="#dashboard">Produção</a>
   <a href="#curiosidades">Curiosidades</a>
@@ -36,41 +43,44 @@
 <section id="sobre" class="section">
   <h2>🌱 Sobre o Agro Paranaense</h2>
   <p>
-    O agronegócio do Paraná é um dos mais desenvolvidos do Brasil, combinando agricultura moderna,
-    tecnologia e forte produção de proteína animal. O estado é referência nacional e internacional.
+    O agronegócio do Paraná é altamente desenvolvido, combinando tecnologia, mecanização e forte produção de grãos e proteína animal.
+    O estado é referência nacional em produtividade e exportação agrícola.
   </p>
 </section>
 
 <!-- HISTÓRIA -->
 <section id="historia" class="section dark">
-  <h2>📜 História Completa</h2>
+  <h2>📜 História do Agro</h2>
 
+  <p>Antes da colonização, povos indígenas já cultivavam mandioca, milho e erva-mate.</p>
+  <p>No século XIX, imigrantes europeus modernizaram a agricultura com pequenas propriedades familiares.</p>
+  <p>No século XX, a mecanização transformou o estado em potência agrícola, com destaque para soja e trigo.</p>
+  <p>Hoje, o estado utiliza agricultura de precisão, drones, sensores e inteligência artificial no campo.</p>
+</section>
+
+<!-- ECONOMIA -->
+<section id="economia" class="section">
+  <h2>💰 Economia Agrícola</h2>
   <p>
-    A agricultura no Paraná começou com povos indígenas que já cultivavam mandioca, milho e erva-mate.
+    O agronegócio representa uma das principais forças econômicas do estado, com forte participação no PIB e nas exportações brasileiras.
   </p>
 
-  <p>
-    A partir do século XIX, imigrantes europeus (italianos, alemães e poloneses) transformaram o estado
-    em uma base agrícola estruturada.
-  </p>
-
-  <p>
-    No século XX, houve a grande revolução agrícola: mecanização, expansão da soja, trigo e integração com a agroindústria.
-  </p>
-
-  <p>
-    Hoje, o estado é altamente tecnológico, utilizando agricultura de precisão, drones, sensores e IA.
-  </p>
+  <div class="cards">
+    <div class="card">🌽 Soja e milho lideram exportações</div>
+    <div class="card">🍗 Maior produtor de frango do Brasil</div>
+    <div class="card">🚜 Alta mecanização no campo</div>
+    <div class="card">🌍 Forte presença no mercado internacional</div>
+  </div>
 </section>
 
 <!-- MAPA -->
-<section id="mapa" class="section">
-  <h2>🗺️ Mapa Agrícola do Paraná</h2>
-  <div id="map"></div>
+<section id="mapa" class="section dark">
+  <h2>🗺️ Mapa Agrícola</h2>
+  <div id="map" style="height: 400px;"></div>
 </section>
 
 <!-- DASHBOARD -->
-<section id="dashboard" class="section dark">
+<section id="dashboard" class="section">
   <h2>📊 Produção Agrícola</h2>
 
   <div class="charts">
@@ -81,31 +91,40 @@
 </section>
 
 <!-- CURIOSIDADES -->
-<section id="curiosidades" class="section">
-  <h2>🧠 Curiosidades Técnicas</h2>
+<section id="curiosidades" class="section dark">
+  <h2>🧠 Curiosidades</h2>
 
   <div class="cards">
-    <div class="card">🌾 O Paraná é líder em frango no Brasil</div>
-    <div class="card">🚜 Agricultura digital cresce mais de 20% ao ano</div>
-    <div class="card">🌽 Milho e soja dominam mais de 80% da produção</div>
-    <div class="card">📡 Uso de satélites melhora produtividade</div>
+    <div class="card">🌾 Líder nacional em produção de frango</div>
+    <div class="card">📡 Agricultura digital cresce rapidamente</div>
+    <div class="card">🌽 Soja ocupa grande parte das lavouras</div>
+    <div class="card">🚁 Uso de drones melhora produtividade</div>
   </div>
 </section>
 
-<!-- GALERIA -->
+<!-- CLIMA -->
 <section class="section">
+  <h2>🌦️ Clima e Produção</h2>
+  <p>
+    O clima subtropical do Paraná favorece diversas culturas como soja, milho, trigo e café,
+    permitindo alta produtividade durante o ano.
+  </p>
+</section>
+
+<!-- GALERIA -->
+<section class="section dark">
   <h2>📸 Imagens do Campo</h2>
 
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef">
-    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399">
-    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30">
-    <img src="https://images.unsplash.com/photo-1592982537447-6f2a2b2a4a2a">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Plantação">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399" alt="Agricultura moderna">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1500595046743-cd271d694d30" alt="Colheita">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1592982537447-6f2a2b2a4a2a" alt="Campo agrícola">
   </div>
 </section>
 
 <footer>
-  <p>🌾 Portal Agro Paraná - inspirado em dados institucionais</p>
+  <p>🌾 Portal Agro Paraná - Dados educativos e informativos</p>
 </footer>
 
 <script src="script.js"></script>
